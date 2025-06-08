@@ -51,6 +51,10 @@ if not df.empty:
         close=df['Close'],
         name="Candles"
     )])
+if len(df.index) > 200:
+    x_range = [df.index[-200], df.index[-1]]
+else:
+    x_range = [df.index[0], df.index[-1]]
 
     fig.update_layout(
         xaxis_rangeslider_visible=False,
@@ -59,7 +63,7 @@ if not df.empty:
         plot_bgcolor='white',
         fixedrange=False,
         autorange=False,
-        range=[df.index[-200], df.index[-1]],  # 초기 줌 범위
+        range=x_range
     ),
     dragmode="pan",  # 마우스로 이동 가능
 
