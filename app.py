@@ -56,7 +56,7 @@ if not df.empty:
     fig.update_layout(
         xaxis_rangeslider_visible=False,
         margin=dict(l=20, r=20, t=40, b=20),
-        height=700
+        height='700'
         plot_bgcolor='black'
     )
 
