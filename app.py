@@ -57,7 +57,12 @@ if not df.empty:
         margin=dict(l=0, r=0, t=30, b=10),
         height=760,
         plot_bgcolor='white'
-    )
+        fixedrange=False,
+        autorange=False,
+        range=[df.index[-200], df.index[-1]],  # 초기 줌 범위
+    ),
+    dragmode="pan",  # 마우스로 이동 가능
+
 
     st.plotly_chart(fig, use_container_width=True)
 
