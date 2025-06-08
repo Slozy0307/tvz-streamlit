@@ -3,6 +3,8 @@ import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
 
+st.set_page_config(layout="wide")
+
 # 🔹 앱 제목
 st.title("📊 TVZ 실험용 캔들차트")
 
@@ -44,8 +46,6 @@ if not df.empty:
         st.error("🛑 'Open' 컬럼이 없습니다. 데이터 소스를 확인해주세요.")
 
     # 🔹 캔들차트 그리기
-    st.set_page_config(layout="wide")
-
     fig = go.Figure(data=[go.Candlestick(
         x=df['Date'] if 'Date' in df.columns else df.index,
         open=df['Open'],
