@@ -56,7 +56,7 @@ if not df.empty:
         xaxis_rangeslider_visible=False,
         margin=dict(l=0, r=0, t=30, b=10),
         height=760,
-        plot_bgcolor='white'
+        plot_bgcolor='white',
         fixedrange=False,
         autorange=False,
         range=[df.index[-200], df.index[-1]],  # 초기 줌 범위
