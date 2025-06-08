@@ -12,7 +12,7 @@ data_source = st.sidebar.selectbox("데이터 소스", ["Yahoo Finance"])  # 이
 interval = st.sidebar.selectbox("데이터 주기", ["1d", "1wk", "1mo"])
 tvz_period = st.sidebar.slider("TVZ 기간 (일)", min_value=5, max_value=100, value=20)
 
-data_source = st.sidebar.selectbox("데이터 소스", ["Yahoo Finance"])
+data_source = st.sidebar.selectbox("데이터 소스 선택", ["Yahoo Finance"])
 
 
 # Yahoo Finance 선택 시
