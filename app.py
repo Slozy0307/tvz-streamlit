@@ -40,7 +40,6 @@ if not df.empty:
             low=df['Low'],
             close=df['Close']
         )])
-        st.plotly_chart(fig, use_container_width=True)
     else:
         st.error("🛑 'Open' 컬럼이 없습니다. 데이터 소스를 확인해주세요.")
 
