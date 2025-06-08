@@ -51,7 +51,7 @@ if not df.empty:
         close=df['Close'],
         name="Candles"
     )])
-   if len(df.index) > 200:
+if len(df.index) > 200:
     x_range = [df.index[-200], df.index[-1]]
 else:
     x_range = [df.index[0], df.index[-1]]
