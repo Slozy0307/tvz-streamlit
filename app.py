@@ -87,7 +87,6 @@ if not df.empty:
 
 
     st.plotly_chart(fig, use_container_width=True)
-    st.write("인덱스 타입:", type(df.index))
 
 else:
     st.error("🛑 'Open' 컬럼이 없습니다. 데이터 소스를 확인해주세요.")
