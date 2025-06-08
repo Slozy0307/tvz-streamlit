@@ -25,3 +25,4 @@ st.plotly_chart(fig)
 
 st.write("📊 데이터 수집 결과")
 st.write(df.head())
+st.write("🔎 현재 컬럼:", df.columns)
