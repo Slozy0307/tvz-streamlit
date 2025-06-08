@@ -56,8 +56,9 @@ if not df.empty:
 
     fig.update_layout(
         xaxis_rangeslider_visible=False,
-        margin=dict(l=10, r=10, t=30, b=10),
-        height=600
+        margin=dict(l=20, r=20, t=40, b=20),
+        height=700
+        plot_bgcolor='black'
     )
 
     st.plotly_chart(fig, use_container_width=True)
