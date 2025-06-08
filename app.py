@@ -8,18 +8,14 @@ st.title("TVZ 실험용 캔들차트")
 ticker = st.text_input("종목 코드 입력", "AAPL")
 data = yf.download(ticker, period="1mo", interval="1d")
 
-# 인덱스 초기화 & 컬럼 이름 정리 (AAPL 제거)
-data.reset_index(inplace=True)
-
-# MultiIndex → 단일 컬럼 이름만 유지
+# 인덱스를 날짜로 유지
 if isinstance(data.columns, pd.MultiIndex):
     data.columns = data.columns.droplevel(0)
 
 df = data.copy()
 
-# 캔들차트 그리기
 fig = go.Figure(data=[go.Candlestick(
-    x=df['Date'],
+    x=df.index,  # ✅ 여기!
     open=df['Open'],
     high=df['High'],
     low=df['Low'],
