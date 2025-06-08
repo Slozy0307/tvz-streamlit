@@ -12,6 +12,18 @@ data_source = st.sidebar.selectbox("데이터 소스", ["Yahoo Finance"])  # 이
 interval = st.sidebar.selectbox("데이터 주기", ["1d", "1wk", "1mo"])
 tvz_period = st.sidebar.slider("TVZ 기간 (일)", min_value=5, max_value=100, value=20)
 
+# Yahoo Finance 선택 시
+if source == "Yahoo Finance":
+    data = yf.download(ticker, interval=interval, start="1980-01-01")  # 가장 과거부터 불러오기
+
+    if data.empty:
+        st.warning("📭 데이터가 없습니다. 종목 코드, 주기 등을 확인해주세요.")
+        st.stop()  # 더 이상 아래 코드 실행 안 함
+
+    # 이후 데이터 처리...
+    df = data.copy()
+    df.index = pd.to_datetime(df.index)
+
 # 🔹 데이터 수집
 @st.cache_data(show_spinner=False)
 def load_yahoo_data(ticker, interval):
@@ -56,9 +68,6 @@ if not df.empty:
         x_range = [df.index[max(0, len(df.index) - 200)], df.index[-1]]
     else:
         x_range = None  # 또는 차트를 표시하지 않음
-    if data.empty:
-        st.warning("📭 해당 주기와 코드 조합으로 불러온 데이터가 없습니다.")
-        st.stop()
 
     fig.update_layout(
     xaxis=dict(
@@ -76,7 +85,6 @@ if not df.empty:
 
     st.plotly_chart(fig, use_container_width=True)
     st.write("인덱스 타입:", type(df.index))
-    df.index = pd.to_datetime(df.index)
 
 else:
     st.error("🛑 'Open' 컬럼이 없습니다. 데이터 소스를 확인해주세요.")
