@@ -1,6 +1,7 @@
 import streamlit as st
 import yfinance as yf
 import plotly.graph_objs as go
+import pandas as pd
 
 st.title("TVZ 실험용 캔들차트")
 
