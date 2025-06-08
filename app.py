@@ -62,5 +62,8 @@ if not df.empty:
 
     st.plotly_chart(fig, use_container_width=True)
 
+    # 🔹 데이터 테이블 출력
+    st.markdown("### 📋 데이터 미리보기")
+    st.dataframe(df.tail(10), use_container_width=True)
 else:
     st.warning("❗ 데이터를 불러올 수 없습니다. 종목 코드 또는 API 상태를 확인하세요.")
