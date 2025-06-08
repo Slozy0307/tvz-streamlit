@@ -5,9 +5,6 @@ import plotly.graph_objects as go
 
 st.set_page_config(layout="wide")
 
-# 🔹 앱 제목
-st.title("📊 TVZ 실험용 캔들차트")
-
 # 🔹 사이드바 메뉴 구성
 st.sidebar.header("🛠 설정")
 ticker = st.sidebar.text_input("종목 코드", "AAPL")
