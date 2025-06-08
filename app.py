@@ -7,11 +7,18 @@ st.title("TVZ 실험용 캔들차트")
 ticker = st.text_input("종목 코드 입력", "AAPL")
 data = yf.download(ticker, period="1mo", interval="1d")
 
-df = data.copy()
-df.columns = df.columns.droplevel(0)  # 컬럼 평탄화 (한 번만!)
+# 인덱스 초기화 & 컬럼 이름 정리 (AAPL 제거)
+data.reset_index(inplace=True)
 
+# MultiIndex → 단일 컬럼 이름만 유지
+if isinstance(data.columns, pd.MultiIndex):
+    data.columns = data.columns.droplevel(0)
+
+df = data.copy()
+
+# 캔들차트 그리기
 fig = go.Figure(data=[go.Candlestick(
-    x=df.index,
+    x=df['Date'],
     open=df['Open'],
     high=df['High'],
     low=df['Low'],
@@ -20,5 +27,4 @@ fig = go.Figure(data=[go.Candlestick(
 st.plotly_chart(fig)
 
 st.write("📊 데이터 수집 결과")
-st.write(data.head())
-
+st.write(df.head())
