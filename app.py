@@ -15,3 +15,6 @@ fig = go.Figure(data=[go.Candlestick(
     close=data['Close']
 )])
 st.plotly_chart(fig)
+
+st.write("데이터 수집 결과")
+st.write(data.head())
