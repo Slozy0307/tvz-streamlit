@@ -58,15 +58,18 @@ if not df.empty:
         x_range = [df.index[0], df.index[-1]]
 
     fig.update_layout(
-        xaxis_rangeslider_visible=False,
-        margin=dict(l=0, r=0, t=30, b=10),
-        height=760,
-        plot_bgcolor='white',
+    xaxis=dict(
+        rangeslider=dict(visible=False),
+        range=x_range,
         fixedrange=False,
         autorange=False,
-        range=x_range,
-        dragmode="pan"
-    )
+    ),
+    margin=dict(l=0, r=0, t=30, b=10),
+    height=760,
+    plot_bgcolor='white',
+    dragmode='pan'
+)
+
 
     st.plotly_chart(fig, use_container_width=True)
 
