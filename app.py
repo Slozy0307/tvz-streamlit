@@ -20,5 +20,3 @@ st.plotly_chart(fig)
 
 st.write("데이터 수집 결과")
 st.write(data.head())
-df = data.copy()
-df.columns = df.columns.droplevel(0)  # 이 줄 추가!
