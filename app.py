@@ -29,7 +29,20 @@ if data_source == "Yahoo Finance":
 # 🔹 컬럼 정리
 if not df.empty:
     if isinstance(df.columns, pd.MultiIndex):
-        df.columns = df.columns.droplevel(0)
+        # 다중 인덱스일 경우: 첫 번째 계층명을 유지하고 두 번째 계층명을 제거
+        df.columns = df.columns.get_level_values(0)
+
+    if 'Open' in df.columns:
+        fig = go.Figure(data=[go.Candlestick(
+            x=df['Date'] if 'Date' in df.columns else df.index,
+            open=df['Open'],
+            high=df['High'],
+            low=df['Low'],
+            close=df['Close']
+        )])
+        st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.error("🛑 'Open' 컬럼이 없습니다. 데이터 소스를 확인해주세요.")
 
     # 🔹 캔들차트 그리기
     fig = go.Figure(data=[go.Candlestick(
