@@ -52,10 +52,13 @@ if not df.empty:
         name="Candles"
     )])
      # 마우스 휠 기준 범위 설정
-    if len(df.index) > 200:
-        x_range = [df.index[-200], df.index[-1]]
+    if len(df.index) >= 2:
+        x_range = [df.index[max(0, len(df.index) - 200)], df.index[-1]]
     else:
-        x_range = [df.index[0], df.index[-1]]
+        x_range = None  # 또는 차트를 표시하지 않음
+    if data.empty:
+        st.warning("📭 해당 주기와 코드 조합으로 불러온 데이터가 없습니다.")
+        st.stop()
 
     fig.update_layout(
     xaxis=dict(
@@ -72,6 +75,8 @@ if not df.empty:
 
 
     st.plotly_chart(fig, use_container_width=True)
+    st.write("인덱스 타입:", type(df.index))
+    df.index = pd.to_datetime(df.index)
 
 else:
     st.error("🛑 'Open' 컬럼이 없습니다. 데이터 소스를 확인해주세요.")
