@@ -17,7 +17,7 @@ tvz_period = st.sidebar.slider("TVZ 기간 (일)", min_value=5, max_value=100, v
 @st.cache_data(show_spinner=False)
 def load_yahoo_data(ticker, interval):
     try:
-        data = yf.download(ticker, period="1mo", interval=interval)
+        data = yf.download(ticker, period="max", interval=interval)
         data.reset_index(inplace=True)
         return data
     except:
