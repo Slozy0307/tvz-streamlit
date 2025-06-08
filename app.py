@@ -8,10 +8,13 @@ st.title("TVZ 실험용 캔들차트")
 ticker = st.text_input("종목 코드 입력", "AAPL")
 data = yf.download(ticker, period="1mo", interval="1d")
 
-if isinstance(data.columns, pd.MultiIndex):
-    data.columns = data.columns.droplevel(0)
 
 df = data.copy()
+
+st.write("📌 컬럼 확인:", df.columns)
+
+if isinstance(df.columns, pd.MultiIndex):
+    df.columns = df.columns.droplevel(0)
 
 # 👇 여기 추가!
 df.columns = [col.capitalize() for col in df.columns]
