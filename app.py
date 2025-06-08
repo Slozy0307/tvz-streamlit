@@ -16,7 +16,7 @@ data_source = st.sidebar.selectbox("데이터 소스 선택", ["Yahoo Finance"])
 
 
 # Yahoo Finance 선택 시
-if source == "Yahoo Finance":
+if data_source == "Yahoo Finance":
     data = yf.download(ticker, interval=interval, start="1980-01-01")  # 가장 과거부터 불러오기
 
     if data.empty:
