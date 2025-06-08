@@ -51,22 +51,21 @@ if not df.empty:
         close=df['Close'],
         name="Candles"
     )])
-    if len(df.index) > 200:
+   if len(df.index) > 200:
     x_range = [df.index[-200], df.index[-1]]
 else:
     x_range = [df.index[0], df.index[-1]]
 
-    fig.update_layout(
-        xaxis_rangeslider_visible=False,
-        margin=dict(l=0, r=0, t=30, b=10),
-        height=760,
-        plot_bgcolor='white',
-        fixedrange=False,
-        autorange=False,
-        range=x_range
-    ),
-    dragmode="pan",  # 마우스로 이동 가능
-
+fig.update_layout(
+    xaxis_rangeslider_visible=False,
+    margin=dict(l=0, r=0, t=30, b=10),
+    height=760,
+    plot_bgcolor='white',
+    fixedrange=False,
+    autorange=False,
+    range=x_range,
+    dragmode="pan"
+)
 
     st.plotly_chart(fig, use_container_width=True)
 
