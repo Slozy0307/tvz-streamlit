@@ -75,17 +75,18 @@ if not df.empty:
     fig.update_layout(
     xaxis=dict(
         rangeslider=dict(visible=False),
-        fixedrange=False,
-        autorange=True
+        fixedrange=False,   # x축은 줌/확대 허용
+        autorange=True,
     ),
     yaxis=dict(
-        fixedrange=False
+        fixedrange=True     # 🔒 y축은 확대/축소 금지
     ),
     dragmode='pan',
-    height=650,  # 너무 크지 않게
+    height=600,
     margin=dict(l=0, r=0, t=30, b=10),
     plot_bgcolor='white'
 )
+
 
 
     st.plotly_chart(fig, use_container_width=True)
