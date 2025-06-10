@@ -75,14 +75,16 @@ if not df.empty:
     fig.update_layout(
     xaxis=dict(
         rangeslider=dict(visible=False),
-        range=x_range,
         fixedrange=False,
-        autorange=False,
+        autorange=True
     ),
+    yaxis=dict(
+        fixedrange=False
+    ),
+    dragmode='pan',
+    height=650,  # 너무 크지 않게
     margin=dict(l=0, r=0, t=30, b=10),
-    height=760,
-    plot_bgcolor='white',
-    dragmode='pan'
+    plot_bgcolor='white'
 )
 
 
