@@ -75,19 +75,20 @@ if not df.empty:
     fig.update_layout(
     xaxis=dict(
         rangeslider=dict(visible=False),
-        fixedrange=False,   # x축은 줌/확대 허용
+        fixedrange=False,   # ✅ x축은 줌 허용
         autorange=True,
     ),
     yaxis=dict(
-        fixedrange=True     # 🔒 y축은 확대/축소 금지
+        fixedrange=True     # 🔒 y축은 고정
     ),
-    dragmode='pan',
+    dragmode='zoom',         # ✅ 마우스 휠 확대/축소를 위한 핵심 설정
     height=600,
     margin=dict(l=0, r=0, t=30, b=10),
     plot_bgcolor='white'
 )
 
-# 🔥 여기 중요: 휠 줌 활성화
+
+# 🔥 최종 출력: 한 번만!
 st.plotly_chart(fig, use_container_width=True, config={'scrollZoom': True})
 
 
