@@ -87,6 +87,8 @@ if not df.empty:
     plot_bgcolor='white'
 )
 
+# 🔥 여기 중요: 휠 줌 활성화
+st.plotly_chart(fig, use_container_width=True, config={'scrollZoom': True})
 
 
     st.plotly_chart(fig, use_container_width=True)
